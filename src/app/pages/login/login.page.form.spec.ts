@@ -28,7 +28,7 @@ describe('LoginPageForm', () => {
         expect(form.get('email')!.valid).toBeFalsy();
     })
 
-    it('should have email valis if email is valid', () => {
+    it('should have email valid if email is valid', () => {
         form.get('email')!.setValue("valid@gmail.com");
         expect(form.get('email')!.valid).toBeTruthy();
     })
