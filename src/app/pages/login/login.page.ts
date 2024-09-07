@@ -8,7 +8,7 @@ import { show, hide } from 'src/store/loading/loading.action'; // Combined impor
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/AppState';
 import { recoverPassword, recoverPasswordSuccess, recoverPasswordFail, login, loginSuccess, loginFail } from 'src/store/login/login.actions'; // Combined import
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { LoginState } from 'src/store/login/LoginState';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -25,7 +25,7 @@ export class LoginPage implements OnInit, OnDestroy {
   loginStateSubscription!: Subscription;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private store: Store<AppState>,
-    private toastController: ToastController, private authService: AuthService
+    private toastController: ToastController, private authService: AuthService, private navController: NavController
   ) { }  // Injeksi Router
 
   ngOnInit() {
@@ -55,7 +55,7 @@ export class LoginPage implements OnInit, OnDestroy {
 
   private onIsLoggedIn(loginState: LoginState){
     if (loginState.isLoggedIn) {
-      this.router.navigate(['home']);
+      this.navController.navigateRoot('home');
     }
   }
   
